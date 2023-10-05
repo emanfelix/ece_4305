@@ -130,6 +130,15 @@ module fifo_tb(
         wr = 1'b0;        
         
         // ----------------FULL-----------------------
+        // read & write at the same time
+        repeat(1) @(negedge clk);
+        w_data = 8'd4;
+        wr = 1'b1;
+        rd = 1'b1;
+        @(negedge clk)
+        wr = 1'b0;
+        rd = 1'b0;
+        
         // read
         repeat(1) @(negedge clk);
         rd = 1'b1;

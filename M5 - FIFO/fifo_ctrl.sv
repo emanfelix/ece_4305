@@ -95,6 +95,12 @@ module fifo_ctrl
                     wr_ptr_next = wr_ptr;
                     rd_ptr_next = rd_ptr;
                 end 
+                else if (full)
+                begin
+                    wr_ptr_next = wr_ptr;
+                    rd_ptr_next = rd_ptr + 1;
+                    full_next = 1'b0;
+                end
                 else
                 begin
                     wr_ptr_next = wr_ptr + 1;
